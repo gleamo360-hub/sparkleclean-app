@@ -1,0 +1,747 @@
+/* Removes default browser margins */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+
+/* Navbar Styling */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #007bff;
+}
+
+.login-btn {
+    background-color: #007bff;
+    color: white !important;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.login-btn:hover {
+    background-color: #0056b3;
+}
+
+.logout-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+}
+
+
+/* Adds some breathing room to the page content */
+
+.page-content {
+    padding: 2rem;
+}
+
+
+/* --- Home Page & Service Cards --- */
+
+.home-container {
+    text-align: center;
+}
+
+.home-header {
+    margin-bottom: 3rem;
+}
+
+.home-header h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.services-section h2 {
+    margin-bottom: 2rem;
+    color: #444;
+}
+
+
+/* Creates a responsive grid that adjusts to screen size */
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease;
+    text-align: left;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.service-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.service-details {
+    padding: 1.5rem;
+}
+
+.service-details h3 {
+    color: #222;
+    margin-bottom: 0.5rem;
+}
+
+.service-details p {
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.price {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #28a745 !important;
+}
+
+.card-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.card-buttons a {
+    flex: 1;
+    text-align: center;
+    padding: 0.6rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.btn-read-more {
+    background-color: #f8f9fa;
+    color: #007bff;
+    border: 1px solid #007bff;
+}
+
+.btn-read-more:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-book {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-book:hover {
+    background-color: #218838;
+}
+
+.error {
+    color: red;
+    margin-top: 2rem;
+}
+
+
+/* --- Auth & Login Page --- */
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 75vh;
+}
+
+.auth-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.auth-card h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.form-group label {
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.form-group input {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.btn-submit {
+    background-color: #007bff;
+    color: white;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+}
+
+.auth-toggle {
+    margin-top: 1.5rem;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.auth-toggle span {
+    color: #007bff;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.auth-toggle span:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+
+/* Alert Messages */
+
+.error-msg {
+    color: #dc3545;
+    background-color: #f8d7da;
+    padding: 0.8rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.success-msg {
+    color: #155724;
+    background-color: #d4edda;
+    padding: 0.8rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+
+/* --- Booking Page --- */
+
+.book-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+}
+
+.book-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.book-card h2 {
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.book-card h3 {
+    color: #007bff;
+    margin-bottom: 1rem;
+}
+
+.book-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #28a745;
+    margin-bottom: 2rem;
+}
+
+.book-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-2 {
+    margin-top: 2rem;
+}
+
+
+/* --- Admin Dashboard --- */
+
+.admin-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.admin-container h2 {
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.admin-container p {
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.admin-table th {
+    background-color: #f8f9fa;
+    color: #333;
+    font-weight: bold;
+}
+
+.admin-table tr:hover {
+    background-color: #f1f5f9;
+}
+
+
+/* --- Service Detail Page --- */
+
+.detail-container {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.detail-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.detail-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.detail-info {
+    padding: 2.5rem;
+    text-align: center;
+}
+
+.detail-price {
+    font-size: 1.5rem;
+    color: #28a745;
+    font-weight: bold;
+    margin: 1rem 0;
+}
+
+.detail-desc {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.detail-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn-back {
+    padding: 0.8rem 1.5rem;
+    background: #e2e8f0;
+    color: #333;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.btn-book-large {
+    padding: 0.8rem 1.5rem;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+
+/* --- Reviews Section --- */
+
+.reviews-section {
+    margin-top: 4rem;
+    text-align: center;
+    padding-top: 3rem;
+    border-top: 2px solid #eee;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.review-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.stars {
+    color: #ffc107;
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+.comment {
+    font-style: italic;
+    color: #666;
+}
+
+.review-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.review-form select,
+.review-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+}
+
+.login-prompt {
+    margin-top: 2rem;
+    color: #888;
+}
+
+
+/* --- PREMIUM MODERN THEME VARIABLES --- */
+
+:root {
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --primary-accent: #00c6ff;
+    --glass-border: rgba(0, 0, 0, 0.05);
+    --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 20px 40px -10px rgba(0, 198, 255, 0.15);
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+}
+
+
+/* --- MAIN LAYOUT CONTAINERS --- */
+
+.premium-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+/* --- TYPOGRAPHY & HEADINGS --- */
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+}
+
+.text-muted {
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+
+/* --- HERO SECTIONS --- */
+
+.detail-hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    margin-bottom: 40px;
+    box-shadow: var(--shadow-soft);
+}
+
+.badge {
+    background: rgba(0, 198, 255, 0.1);
+    color: #0096c7;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+
+/* --- GRIDS (THIS FIXES YOUR VERTICAL STACKING!) --- */
+
+.gallery-grid {
+    display: grid;
+    /* This automatically puts items in rows and columns based on screen size */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+
+/* --- CARDS --- */
+
+.detail-card {
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.3s ease;
+}
+
+.detail-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(0, 198, 255, 0.3);
+}
+
+.detail-card h3 {
+    font-size: 1.3rem;
+    margin-top: 0;
+    color: var(--text-main);
+}
+
+
+/* --- BUTTONS & LINKS --- */
+
+.cta-btn-premium {
+    background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+    color: white !important;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0, 198, 255, 0.3);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.cta-btn-premium:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 25px rgba(0, 198, 255, 0.4);
+}
+
+
+/* --- ANIMATIONS --- */
+
+.animate-fade-in {
+    animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* --- HIGH END LUXURY WHATSAPP FLOATING BADGE --- */
+
+.whatsapp-float {
+    position: fixed;
+    top: 100px;
+    /* CHANGED: Moved to the top, placed just below the Navbar */
+    right: 30px;
+    /* CHANGED/KEPT: Locked to the right side */
+    background: #25d366;
+    color: white;
+    padding: 14px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+    z-index: 9999;
+    transition: var(--transition-smooth);
+}
+
+.whatsapp-float:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(37, 211, 102, 0.6);
+}
+
+
+/* --- HIGH END LUXURY CALL FLOATING BADGE --- */
+
+.call-float {
+    position: fixed;
+    top: 170px;
+    /* Placed exactly 70px below the WhatsApp button */
+    right: 30px;
+    /* Locked to the same right-side alignment */
+    background: #00c6ff;
+    /* A premium blue to contrast with WhatsApp's green */
+    color: white;
+    padding: 14px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0, 198, 255, 0.4);
+    z-index: 9999;
+    transition: var(--transition-smooth);
+}
+
+.call-float:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(0, 198, 255, 0.6);
+}
