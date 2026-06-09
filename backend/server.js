@@ -6,15 +6,13 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// --- UPDATED CORS CONFIGURATION ---
+// --- THE NUCLEAR CORS FIX ---
 app.use(cors({
-    origin: [
-        'http://localhost:5173', // Keeps your local development working perfectly
-        'https://sparkleclean-app.vercel.app' // REPLACE THIS with your real Vercel link!
-    ],
-    credentials: true
+    origin: "*", // This allows any website to connect!
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"]
 }));
-// ----------------------------------
+// ----------------------------
 
 app.use(express.json());
 
