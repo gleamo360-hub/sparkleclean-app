@@ -12,7 +12,7 @@ const ServiceDetail = () => {
     const fetchServiceDetails = async () => {
       try {
         // Fetch all services, then find the specific one the user clicked
-        const response = await axios.get('http://localhost:5000/api/services');
+        const response = await axios.get('https://sparkleclean-backend.onrender.com/api/services');
         const foundService = response.data.find(s => s._id === id);
         setService(foundService);
         setLoading(false);
