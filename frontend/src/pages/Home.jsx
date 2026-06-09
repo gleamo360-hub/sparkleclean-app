@@ -14,7 +14,7 @@ const Home = () => {
     const fetchServices = async () => {
       try {
         // Asks your backend for the database list!
-        const response = await axios.get('http://localhost:5000/api/services');
+        const response = await axios.get('https://sparkleclean-backend.onrender.com/api/services');
         setServices(response.data);
         setLoading(false);
       } catch {

@@ -30,7 +30,7 @@ const Login = () => {
     try {
       if (isLogin) {
         // --- LOGIN LOGIC ---
-        const response = await axios.post('http://localhost:5000/api/auth/login', {
+        const response = await axios.post('https://sparkleclean-backend.onrender.com/api/auth/login', {
           email: formData.email,
           password: formData.password
         });
@@ -44,7 +44,7 @@ const Login = () => {
         setTimeout(() => navigate('/'), 1500); 
       } else {
         // --- REGISTER LOGIC ---
-        await axios.post('http://localhost:5000/api/auth/register', {
+        await axios.post('https://sparkleclean-backend.onrender.com/api/auth/register', {
           name: formData.name,
           email: formData.email,
           password: formData.password

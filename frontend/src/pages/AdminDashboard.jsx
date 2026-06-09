@@ -21,7 +21,7 @@ const AdminDashboard = () => {
 
       try {
         // Fetch from the secure ADMIN ONLY route
-        const response = await axios.get('http://localhost:5000/api/bookings/all', {
+        const response = await axios.get('https://sparkleclean-backend.onrender.com/api/bookings/all', {
           headers: { Authorization: `Bearer ${token}` }
         });
         setBookings(response.data);

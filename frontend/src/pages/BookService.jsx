@@ -20,7 +20,7 @@ const BookService = () => {
   useEffect(() => {
     const fetchService = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/services');
+        const response = await axios.get('https://sparkleclean-backend.onrender.com/api/services');
         const foundService = response.data.find(s => s._id === id);
         setService(foundService);
       } catch {
@@ -44,7 +44,7 @@ const BookService = () => {
 
     try {
       // NEW: We are now sending the address and phone to the backend!
-      await axios.post('http://localhost:5000/api/bookings', 
+      await axios.post('https://sparkleclean-backend.onrender.com/api/bookings', 
         {
           serviceId: id,
           date: date,

@@ -14,7 +14,7 @@ const Reviews = () => {
   useEffect(() => {
     const loadInitialReviews = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/reviews');
+        const response = await axios.get('https://sparkleclean-backend.onrender.com/api/reviews');
         setReviews(response.data);
       } catch (error) {
         console.log("Error loading reviews:", error);
@@ -30,7 +30,7 @@ const Reviews = () => {
     
     try {
       // 2. Submit the new review to the database
-      await axios.post('http://localhost:5000/api/reviews', 
+      await axios.post('https://sparkleclean-backend.onrender.com/api/reviews', 
         { rating, comment },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -39,7 +39,7 @@ const Reviews = () => {
       setComment(''); // Clear the text box
       
       // 3. Manually ask the database for the updated list right here!
-      const updatedResponse = await axios.get('http://localhost:5000/api/reviews');
+      const updatedResponse = await axios.get('https://sparkleclean-backend.onrender.com/api/reviews');
       setReviews(updatedResponse.data);
       
     } catch (error) {
