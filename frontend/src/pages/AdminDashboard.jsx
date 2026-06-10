@@ -12,7 +12,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchAllBookings = async () => {
       const token = localStorage.getItem('token');
-      
+
       // If there is no token, kick them to login
       if (!token) {
         navigate('/login');
@@ -37,7 +37,7 @@ const AdminDashboard = () => {
   }, [navigate]);
 
   if (loading) return <div className="text-center" style={{ padding: '100px' }}><h3>Loading Command Center...</h3></div>;
-  
+
   // If a regular user tries to access this, show the giant red error
   if (error) return (
     <div className="premium-container animate-fade-in text-center">
@@ -63,7 +63,7 @@ const AdminDashboard = () => {
         ) : (
           bookings.map((booking) => (
             <div key={booking._id} className="detail-card" style={{ borderTop: '4px solid #00c6ff', position: 'relative' }}>
-              
+
               {/* Badge for Status */}
               <span style={{ position: 'absolute', top: '20px', right: '20px', background: 'rgba(255, 255, 255, 0.1)', padding: '5px 12px', borderRadius: '50px', fontSize: '0.8rem', color: '#00c6ff', fontWeight: 'bold' }}>
                 {booking.status || 'Pending'}
@@ -77,9 +77,16 @@ const AdminDashboard = () => {
                 <strong>Booked On:</strong> {new Date(booking.createdAt).toLocaleDateString()}
               </p>
 
-              <div style={{ background: 'var(--bg-color)', padding: '15px', borderRadius: '12px', marginBottom: '15px' }}>
-                <p style={{ margin: '0 0 10px 0', fontSize: '0.95rem' }}>📅 <strong>Service Needed For:</strong><br/> <span style={{ color: 'white' }}>{new Date(booking.date).toLocaleDateString()}</span></p>
-                <p style={{ margin: '0 0 10px 0', fontSize: '0.95rem' }}>📍 <strong>Address:</strong><br/> <span style={{ color: 'white' }}>{booking.address}</span></p>
+              {/* FIXED: Changed the background to a dark slate to make the white text pop, or you can keep your light background and use dark text! */}
+              <div style={{ background: '#f1f5f9', padding: '15px', borderRadius: '12px', marginBottom: '15px', border: '1px solid var(--glass-border)' }}>
+                <p style={{ margin: '0 0 10px 0', fontSize: '0.95rem', color: 'var(--text-muted)' }}>
+                  📅 <strong style={{ color: 'var(--text-main)' }}>Service Needed For:</strong><br />
+                  <span style={{ color: '#0ea5e9', fontWeight: 'bold', fontSize: '1.1rem' }}>{new Date(booking.date).toLocaleDateString()}</span>
+                </p>
+                <p style={{ margin: '0 0 10px 0', fontSize: '0.95rem', color: 'var(--text-muted)' }}>
+                  📍 <strong style={{ color: 'var(--text-main)' }}>Address:</strong><br />
+                  <span style={{ color: 'var(--text-main)' }}>{booking.address}</span>
+                </p>
               </div>
 
               {/* Customer Details */}
