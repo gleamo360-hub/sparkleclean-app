@@ -10,6 +10,7 @@ import Blogs from './pages/Blogs';
 import Gallery from './pages/Gallery';
 import ServicesPage from './pages/ServicesPage';
 import AdminDashboard from './pages/AdminDashboard';
+import RecoverPassword from './pages/RecoverPassword';
 import './App.css';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path="/book/:id" element={<BookService />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/services/:id" element={<ServiceDetail />} />
+          <Route path="/recover-password" element={<RecoverPassword />} />
         </Routes>
       </div>
     </Router>
