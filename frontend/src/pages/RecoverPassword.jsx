@@ -8,6 +8,7 @@ const RecoverPassword = () => {
     const [message, setMessage] = useState({ text: '', type: '' }); // 'success' or 'error'
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,16 +21,16 @@ const RecoverPassword = () => {
 
         try {
             const res = await axios.post('https://sparkleclean-backend.onrender.com/api/auth/recover-password', formData);
-            
+
             // Show success message inside the page
             setMessage({ text: res.data.message, type: 'success' });
-            
+
             // Redirect after 2 seconds
             setTimeout(() => navigate('/login'), 2000);
         } catch (err) {
-            setMessage({ 
-                text: err.response?.data?.message || "Recovery failed. Please check your details.", 
-                type: 'error' 
+            setMessage({
+                text: err.response?.data?.message || "Recovery failed. Please check your details.",
+                type: 'error'
             });
         } finally {
             setLoading(false);
@@ -39,7 +40,7 @@ const RecoverPassword = () => {
     return (
         <div className="auth-container animate-fade-in" style={{ minHeight: '80vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <div className="auth-card" style={{ maxWidth: '450px', width: '100%', padding: '40px', borderRadius: '24px', background: 'white', boxShadow: '0 20px 40px rgba(0,0,0,0.08)' }}>
-                
+
                 <div style={{ textAlign: 'center', marginBottom: '30px' }}>
                     <h2 style={{ fontSize: '2rem', fontWeight: '800', color: '#0f172a' }}>Recover Password 🔐</h2>
                     <p style={{ color: '#64748b' }}>Answer your security question to reset your password.</p>
@@ -47,10 +48,10 @@ const RecoverPassword = () => {
 
                 {/* Status Message Display */}
                 {message.text && (
-                    <div style={{ 
-                        padding: '12px', 
-                        borderRadius: '8px', 
-                        marginBottom: '20px', 
+                    <div style={{
+                        padding: '12px',
+                        borderRadius: '8px',
+                        marginBottom: '20px',
                         fontSize: '0.9rem',
                         textAlign: 'center',
                         background: message.type === 'success' ? '#f0fdf4' : '#fef2f2',
@@ -70,11 +71,27 @@ const RecoverPassword = () => {
                         <label style={{ fontWeight: '600' }}>Security Answer</label>
                         <input type="text" name="securityAnswer" onChange={handleChange} required style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #cbd5e1' }} />
                     </div>
-                    <div className="form-group">
+                    <div className="form-group" style={{ position: 'relative' }}>
                         <label style={{ fontWeight: '600' }}>New Password</label>
-                        <input type="password" name="newPassword" onChange={handleChange} required style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #cbd5e1' }} />
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            name="newPassword"
+                            onChange={handleChange}
+                            required
+                            style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #cbd5e1' }}
+                        />
+                        <button
+                            type="button"
+                            onClick={() => setShowPassword(!showPassword)}
+                            style={{
+                                position: 'absolute', right: '10px', top: '35px',
+                                background: 'none', border: 'none', cursor: 'pointer', color: '#64748b'
+                            }}
+                        >
+                            {showPassword ? '🙈 Hide' : '👁️ Show'}
+                        </button>
                     </div>
-                    
+
                     <button type="submit" disabled={loading} style={{ background: '#00c6ff', color: 'white', padding: '14px', borderRadius: '8px', border: 'none', fontWeight: 'bold', cursor: loading ? 'not-allowed' : 'pointer' }}>
                         {loading ? 'Updating...' : 'Update Password'}
                     </button>
