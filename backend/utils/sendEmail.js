@@ -2,7 +2,6 @@
 const nodemailer = require('nodemailer');
 
 const sendEmail = async(options) => {
-    // 1. Create the transporter (The Post Office)
     const transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
@@ -11,16 +10,19 @@ const sendEmail = async(options) => {
         }
     });
 
-    // 2. Define the email options (The Letter)
-    const mailOptions = {
-        from: `SparkleClean Security <${process.env.EMAIL_USER}>`,
-        to: options.email,
-        subject: options.subject,
-        html: options.message,
-    };
-
-    // 3. Send the email
-    await transporter.sendMail(mailOptions);
+    try {
+        const info = await transporter.sendMail({
+            from: `SparkleClean <${process.env.EMAIL_USER}>`,
+            to: options.email,
+            subject: options.subject,
+            html: options.message,
+        });
+        console.log("✅ Email sent successfully:", info.messageId);
+    } catch (error) {
+        // THIS WILL SHOW THE FULL TECHNICAL ERROR IN RENDER LOGS
+        console.error("❌ FULL EMAIL ERROR:", JSON.stringify(error, null, 2));
+        throw error;
+    }
 };
 
 module.exports = sendEmail;
