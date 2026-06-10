@@ -19,12 +19,8 @@ const verifyAdmin = async(req, res, next) => {
     try {
         const user = await User.findById(req.user.id);
 
-        // TRUTH SERUM 1: Print exactly what the database is sending back
-        console.log("🚨 ADMIN CHECK - User data from DB:", user);
-
-        if (!user || user.isAdmin !== true) {
-            // TRUTH SERUM 2: Print why it failed
-            console.log("🚨 ADMIN CHECK FAILED - isAdmin value is:", user ? user.isAdmin : "User not found");
+        // Check if the user exists and has the 'store' role
+        if (!user || user.role !== 'store') {
             return res.status(403).json({ message: "Access Denied: Admins Only!" });
         }
 
