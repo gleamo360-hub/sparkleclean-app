@@ -11,6 +11,8 @@ import Gallery from './pages/Gallery';
 import ServicesPage from './pages/ServicesPage';
 import './App.css';
 import AdminDashboard from './pages/AdminDashboard';
+import VerifyEmail from './pages/VerifyEmail';
+import ResetPassword from './pages/ResetPassword';
 
 function App() {
   return (
@@ -26,9 +28,11 @@ function App() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/verify-email/:token" element={<VerifyEmail />} />
           <Route path="/book/:id" element={<BookService />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/services/:id" element={<ServiceDetail />} />
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
         </Routes>
       </div>
       
