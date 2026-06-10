@@ -31,26 +31,6 @@ function App() {
           <Route path="/services/:id" element={<ServiceDetail />} />
         </Routes>
       </div>
-
-      {/* GLOBAL FLOATING WHATSAPP BUTTON */}
-      <a 
-        href="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20booking%20a%20cleaning%20service." 
-        className="whatsapp-float" 
-        target="_blank" 
-        rel="noopener noreferrer"
-        title="Chat on WhatsApp"
-      >
-        💬 Chat With Us
-      </a>
-
-      {/* NEW: GLOBAL FLOATING CALL BUTTON */}
-      <a 
-        href="tel:+919876543210" 
-        className="call-float" 
-        title="Call Us Now"
-      >
-        📞 Call Us
-      </a>
       
     </Router>
   );
