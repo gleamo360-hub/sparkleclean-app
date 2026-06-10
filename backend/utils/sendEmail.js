@@ -1,30 +1,18 @@
 // backend/utils/sendEmail.js
-const nodemailer = require('nodemailer');
+// Example using Resend (much more reliable than Nodemailer)
+const { Resend } = require('resend');
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const sendEmail = async(options) => {
-    const transporter = nodemailer.createTransport({
-        service: 'Gmail',
-        auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS
-        },
-        connectionTimeout: 5000, // Wait only 5 seconds before failing
-        greetingTimeout: 5000,
-        socketTimeout: 10000
-    });
-
     try {
-        const info = await transporter.sendMail({
-            from: `SparkleClean <${process.env.EMAIL_USER}>`,
+        await resend.emails.send({
+            from: 'onboarding@resend.dev', // Use your verified domain here later
             to: options.email,
             subject: options.subject,
-            html: options.message,
+            html: options.message
         });
-        console.log("✅ Email sent successfully:", info.messageId);
     } catch (error) {
-        // THIS WILL SHOW THE FULL TECHNICAL ERROR IN RENDER LOGS
-        console.error("❌ FULL EMAIL ERROR:", JSON.stringify(error, null, 2));
-        throw error;
+        console.error("Resend Error:", error);
     }
 };
 
