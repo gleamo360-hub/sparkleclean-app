@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { jwtDecode } from 'jwt-decode'; // NEW: Added to decode the token securely
 import '../App.css';
 
 const AdminDashboard = () => {
@@ -13,22 +14,38 @@ const AdminDashboard = () => {
     const fetchAllBookings = async () => {
       const token = localStorage.getItem('token');
 
-      // If there is no token, kick them to login
+      // 1. If there is no token, kick them to login instantly
       if (!token) {
         navigate('/login');
         return;
       }
 
+      // 2. FRONTEND SECURITY: Check if they are an admin before fetching data
       try {
-        // Fetch from the secure ADMIN ONLY route
+        const decodedToken = jwtDecode(token);
+        
+        // Note: Change 'admin' to 'store' if your database uses 'store' for admins
+        if (decodedToken.role !== 'admin' && decodedToken.role !== 'store') {
+          setError('ACCESS DENIED: You do not have Admin privileges to view this page.');
+          setLoading(false);
+          return; // Stop the function here
+        }
+      } catch {
+        // If the token is corrupted or fake, remove it and force login
+        localStorage.removeItem('token');
+        navigate('/login');
+        return;
+      }
+
+      // 3. If they passed the check, fetch the data
+      try {
         const response = await axios.get('https://sparkleclean-backend.onrender.com/api/bookings/all', {
           headers: { Authorization: `Bearer ${token}` }
         });
         setBookings(response.data);
         setLoading(false);
-      } catch {
-        // If the backend kicks them out (403 Forbidden), they are not an admin!
-        setError('ACCESS DENIED: You do not have Admin privileges to view this page.');
+      } catch (err) {
+        setError(err.response?.data?.message || 'ACCESS DENIED: You do not have Admin privileges to view this page.');
         setLoading(false);
       }
     };
@@ -77,7 +94,6 @@ const AdminDashboard = () => {
                 <strong>Booked On:</strong> {new Date(booking.createdAt).toLocaleDateString()}
               </p>
 
-              {/* FIXED: Changed the background to a dark slate to make the white text pop, or you can keep your light background and use dark text! */}
               <div style={{ background: '#f1f5f9', padding: '15px', borderRadius: '12px', marginBottom: '15px', border: '1px solid var(--glass-border)' }}>
                 <p style={{ margin: '0 0 10px 0', fontSize: '0.95rem', color: 'var(--text-muted)' }}>
                   📅 <strong style={{ color: 'var(--text-main)' }}>Service Needed For:</strong><br />
