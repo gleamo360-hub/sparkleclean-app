@@ -20,7 +20,7 @@ const verifyAdmin = async(req, res, next) => {
         const user = await User.findById(req.user.id);
 
         // Check if the user exists and has the 'store' role
-        if (!user || user.role !== 'store') {
+        if (!user || user.role !== 'admin') {
             return res.status(403).json({ message: "Access Denied: Admins Only!" });
         }
 
